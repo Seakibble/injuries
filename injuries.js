@@ -3,7 +3,7 @@ const injuryTable = [
     {
         name: '-',
         effect: 'Woe.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Shattered Nerves',
@@ -18,7 +18,7 @@ const injuryTable = [
     {
         name: 'Retaliation',
         effect: 'Without using your reaction, you may make a weapon attack or cast a cantrip against the creature that had you make this roll, or the nearest hostile creature.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Battlescar',
@@ -32,7 +32,7 @@ const injuryTable = [
     },
     {
         name: 'Smashed Mouth',
-        effect: 'Blood, spit and teeth go flying everywhere. Gain temp HP equal to your level.',
+        effect: 'Blood, spit and teeth go flying everywhere. Gain tempoary hit points equal to your level.',
         recovery: 'long rest'
     },
     {
@@ -48,11 +48,11 @@ const injuryTable = [
     {
         name: '-',
         effect: 'Woe.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Concussion',
-        effect: 'Unconscious. Wake up at the end of your turn after 1d4 rounds.',
+        effect: 'Unconscious. Wake up at the end of your turn after d4 rounds.',
         recovery: 'long rest'
     },
     {
@@ -67,13 +67,13 @@ const injuryTable = [
     },
     {
         name: 'Head Trauma',
-        effect: 'Exhaustion. Unconscious for 1d10 minutes. You gain a new Flaw: you have memory issues, a tic, or other mannerism.',
+        effect: 'Exhaustion. Unconscious for d10 minutes. You gain a new Flaw: you have memory issues, a tic, or other mannerism.',
         recovery: 'long rest'
     },
     {
         name: 'Cold Fury',
         effect: 'The next attack roll you make that hits will critically hit.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Broken Toes',
@@ -92,18 +92,18 @@ const injuryTable = [
     },
     {
         name: 'Broken Hand',
-        effect: 'Cannot hold anything with that hand nor use it for Somatic spellcasting.',
+        effect: 'Cannot hold anything with that hand nor use it for somatic spellcasting.',
         recovery: 'extended rest'
     },
     {
         name: '-',
         effect: 'Woe.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Adrenaline',
         effect: 'Lose one level of exhaustion. Gain temp HP equal to twice your level. You have advantage on all d20 rolls until the end of your next turn.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Severed Ear',
@@ -117,8 +117,8 @@ const injuryTable = [
     },
     {
         name: 'Surprise Recovery',
-        effect: 'Another injury was not so bad. Lose any injury with the shortest recovery time.',
-        recovery: '-'
+        effect: "Recover from a random injury.",
+        recovery: 'immediate'
     },
     {
         name: 'Broken Arm',
@@ -137,7 +137,7 @@ const injuryTable = [
     },
     {
         name: 'Skull Fracture',
-        effect: 'Exhaustion. Unconscious for 1d4 hours. Your head now has a nasty dent. Make DC 15 Intelligence save or gain a form of indefinite madness.',
+        effect: 'Exhaustion. Unconscious for d4 hours. Your head now has a nasty dent. Make DC 15 Intelligence save or gain a form of indefinite madness.',
         recovery: 'extended rest'
     },
     {
@@ -148,12 +148,12 @@ const injuryTable = [
     {
         name: '-',
         effect: 'Woe.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Frenzy',
         effect: 'You experience a moment of boundless fury. You may immediately take an extra turn.',
-        recovery: '-'
+        recovery: 'immediate'
     },
     {
         name: 'Ruptured Organ',
@@ -195,7 +195,7 @@ const injuryTable = [
     null,
     {
         name: 'Annihilation',
-        effect: 'You die instantly and your broken body is destroyed. Nothing remains of your passing but bloody pulp and a grisly stain.',
+        effect: 'You die immediately and your broken body is destroyed. Nothing remains of your passing but bloody pulp and a grisly stain.',
         recovery: 'resurrection'
     },
     null,
@@ -228,13 +228,13 @@ function getInjury(result, injuries, size) {
     let injury = injuryTable[result]
 
     if (injury) {
-        console.log(injuries, injuryTable.indexOf(injuryTable[result]))
         if (injuries.find(i => i == injuryTable.indexOf(injuryTable[result]))) {
             
             let duplicate = rollDice('1d' + size)
-            log.push("Duplicate (" + injury.name + ", "+result+"+" + duplicate + ')')
-            injury = getInjury(result + duplicate, injuries, size)
+            log.push("Duplicate (" + injury.name + ", " + result + "+" + duplicate + ')')
             console.log("Duplicate! ", injury.name, injury.result)
+            
+            injury = getInjury(result + duplicate, injuries, size)
         }
         else if (injury.effect == 'Woe.') {
             let woe = rollDice('1d10')

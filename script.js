@@ -155,7 +155,7 @@ $characters.addEventListener('click', function (e) {
         if (e.target.classList.contains('rollInjury')) rollInjury(id, false)
         if (e.target.classList.contains('rollCrit')) rollInjury(id, true)
         
-        if (e.target.classList.contains('kill')) {
+        if (e.target.classList.contains('kill') && confirm('Really delete this character?')) {
             characters.splice(id, 1)
             saveData()
             displayCharacters()
@@ -171,7 +171,7 @@ $characters.addEventListener('click', function (e) {
             let $injuriesDiv = e.target.closest('.injuries')
 
             $injuryDiv.remove()
-            $charDiv.querySelector('.totalInjuries').textContent = characters[id].injuries.length
+            $charDiv.querySelector('.totalInjuries').textContent = calculateInjuries(characters[id])
             characters[id].injuryText = $injuriesDiv.innerHTML
             saveData()
         }
@@ -251,12 +251,11 @@ function rollInjury(id, crit) {
         let result = rollDice(dice + 'd' + size)
 
         let injury = getInjury(result, char.injuries, size)
-        console.log('final injury: ', injury)
         char.injuries.push(injury.result)
 
         let recovery = ''
         switch (injury.recovery) {
-            case '-':
+            case 'immediate':
                 recovery = 'NA'
                 break;
             case 'end of your next turn':
@@ -296,14 +295,14 @@ function rollInjury(id, crit) {
         $newInjury.dataset.id = injury.result
         $newInjury.innerHTML = `
             <button class='recover'>X</button>
-            <h4>${injury.result + ': ' + injury.name}</h4>
+            <h4>${injury.result + ': ' + injury.name}!</h4>
             <p><span class='bold'>Effect: </span>${injury.effect}</p>
             <p><span class='bold'>Recovery:</span> ${injury.recovery}</p>
             <p class='subtle'> ${extras ? extras : ''}</p>
         `
         $injuries.prepend($newInjury)
 
-        $totalInjuries.textContent = char.injuries.length
+        $totalInjuries.textContent = calculateInjuries(char)
 
         char.injuryText = $injuries.innerHTML
         saveData()
@@ -311,6 +310,15 @@ function rollInjury(id, crit) {
         console.log('No injury')
         saveData()
     }    
+}
+
+function calculateInjuries(char) {
+    let injuries = 0
+    char.injuries.forEach(injury => {
+        if (!injuryTable[injury] || injuryTable[injury].recovery != 'immediate') injuries++
+    })
+
+    return injuries
 }
 
 function saveData() {

@@ -19,6 +19,7 @@ body {
 h1 {
     text-align: center;
     color: crimson;
+    margin: 0;
 }
 
 h2 {
@@ -36,6 +37,30 @@ h4 {
     margin: 0 0 0.5em;
     font-size: 1.1em;
 }
+
+.rules {
+    margin: 0;
+    text-align: center;
+    display: block;
+}
+
+.rules a {
+    font-weight: bold;
+    text-decoration: none;
+    color: crimson;
+    border-bottom: 2px solid #555;
+    transition: border 0.15s, color 0.15s;
+}
+
+.rules a:visited {
+    color: crimson;
+}
+
+.rules a:hover {
+    border-bottom: 2px solid white;
+    color: white;
+}
+
 
 hr {
     border: none;
@@ -73,6 +98,11 @@ button:hover {
     background: rgb(123, 0, 0);
     border-color: crimson;
     cursor: pointer;
+}
+
+.rollInjury, #makeCharacter {
+    width: auto;
+    margin: 10px auto;
 }
 
 .highlight {
@@ -268,14 +298,14 @@ button:hover {
     }
     .characterDiv {
         display: grid;
-        grid-template-columns: 400px 1fr;
+        grid-template-columns: 360px 1fr;
         grid-gap: 0 20px;
     }
     .characterDiv > :first-child {
         grid-column: span 2;
     }
     .charGen {
-        max-width: 400px;
+        max-width: 360px;
     }
 }
 
