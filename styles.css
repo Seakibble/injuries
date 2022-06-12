@@ -44,7 +44,7 @@ hr {
 }
 
 .input {
-    width: 200px;
+    width: 150px;
     box-sizing: border-box;
     background: #111;
     padding: 4px 8px;
@@ -64,6 +64,7 @@ button {
     color: #fff;
     padding: 5px 10px;
     margin-top: 5px;
+    grid-column: span 2;
 
     transition: border 0.15s, background 0.15s;
 }
@@ -87,9 +88,6 @@ button:hover {
     border-radius: 5px;
     margin-bottom: 10px;
 }
-.charGen button {
-    grid-column: span 2;
-}
 
 .hitPoints {
     display: inline-block;
@@ -99,7 +97,7 @@ button:hover {
 .grid {
     display:grid;
     grid-gap: 4px 10px;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 1fr 150px;
     align-items: center;
 }
 

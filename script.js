@@ -123,13 +123,13 @@ function makeCharacter(char, index) {
                     </div>
 
                     <p>Damage</p>
-                    <div class='grid'>
-                        <input class='damage input small' type='number' min=0 value='1'/>
-                        <label class='checkbox' >Critical
-                            <input class="crit" type="checkbox"/>
-                            <span></span>
-                        </label>
-                    </div>
+                    <input class='damage input small' type='number' min=0/>
+                        
+                    <p>Critical Hit </p>
+                    <label class='checkbox nolabel'>
+                        <input class="crit" type="checkbox" />
+                        <span></span>
+                    </label>
 
                     <!--<button class='rollManually'>Roll Injury</button>-->
                     <button class='rollInjury'>Roll Injury</button>
@@ -288,6 +288,7 @@ function rollInjury(id, crit) {
             extras.push(log.join(', '))
             log = []
         }
+
         extras = extras.join(', ')
 
         let $newInjury = document.createElement('div')
