@@ -247,7 +247,7 @@ function rollInjury(id, crit) {
         $wounds.value = char.wounds
 
         // determine number of dice to roll
-        let dice = char.wounds + char.injuries.length + 1
+        let dice = char.wounds + calculateInjuries(char) + 1
         let result = rollDice(dice + 'd' + size)
 
         let injury = getInjury(result, char.injuries, size)

@@ -228,12 +228,13 @@ function getInjury(result, injuries, size) {
     let injury = injuryTable[result]
 
     if (injury) {
-        if (injuries.find(i => i == injuryTable.indexOf(injuryTable[result]))) {
+        if (injuries.find(i => i == injuryTable.indexOf(injuryTable[result])
+            && injury.recovery != 'immediate')) {
             
             let duplicate = rollDice('1d' + size)
             log.push("Duplicate (" + injury.name + ", " + result + "+" + duplicate + ')')
             console.log("Duplicate! ", injury.name, injury.result)
-            
+
             injury = getInjury(result + duplicate, injuries, size)
         }
         else if (injury.effect == 'Woe.') {
