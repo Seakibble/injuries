@@ -1,0 +1,289 @@
+body, input, button {
+    background: #111;
+    color: #ddd;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+body {
+    display:grid;
+    justify-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+h1 {
+    text-align: center;
+    color: crimson;
+}
+
+h2 {
+    color: greenyellow;
+    margin: 1em 0 0.5em;
+    border-bottom: 2px solid #333;
+}
+
+h3 {
+    color: aqua;
+    margin: 0 0 0.5em;
+}
+
+h4 {
+    margin: 0 0 0.5em;
+    font-size: 1.1em;
+}
+
+hr {
+    border: none;
+    border-bottom: 2px solid #222;
+    margin: 10px 0;
+}
+
+.input {
+    width: 200px;
+    box-sizing: border-box;
+    background: #111;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 3px;
+    color: crimson;
+    font-weight: bold;
+}
+
+.input:focus {
+    outline: 1px solid crimson;
+}
+
+button {
+    background: rgb(68, 0, 0);
+    border: 3px solid rgb(151, 11, 39);
+    color: #fff;
+    padding: 5px 10px;
+    margin-top: 5px;
+
+    transition: border 0.15s, background 0.15s;
+}
+
+button:hover {
+    background: rgb(123, 0, 0);
+    border-color: crimson;
+    cursor: pointer;
+}
+
+.highlight {
+    font-weight: bold;
+    padding-left: 8px;
+    color: greenyellow;
+}
+
+.characterDiv, .charGen {
+    position: relative;
+    background: #191919;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.charGen button {
+    grid-column: span 2;
+}
+
+.hitPoints {
+    display: inline-block;
+    min-width: 50px;
+}
+
+.grid {
+    display:grid;
+    grid-gap: 4px 10px;
+    grid-template-columns: 1fr 200px;
+    align-items: center;
+}
+
+.small {
+    width: 80px;
+}
+
+.grid p {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 0;
+}
+
+.kill, .recover {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+}
+
+.kill:hover, .recover:hover {
+    background: rgb(220, 20, 60);
+}
+
+
+.injury {
+    border: 3px solid #333;
+    color: rgba(255,255,255,0.9);
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in;
+    transition: background 1s;
+}
+
+.injury :last-child {
+    margin-bottom: 0;
+}
+
+.subtle {
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+}
+
+.NA {
+    color: greenyellow;
+    border-color: greenyellow;
+    background:hsl(84, 100%, 5%);
+}
+.NT {
+    color: yellow;
+    border-color: yellow;
+    background:hsl(60, 100%, 5%);
+}
+.SR {
+    color: orange;
+    border-color: orange;
+    background:hsl(39, 100%, 5%);
+}
+.LR {
+    color: red;
+    border-color: red;
+    background:hsl(0, 100%, 5%);
+}
+.ER {
+    color: magenta;
+    border-color: magenta;
+    background:hsl(300, 100%, 5%);
+}
+.RE {
+    color: hsl(0, 0%, 15%);
+    border-color: hsl(0, 0%, 80%);
+    background:hsl(0, 0%, 100%);
+}
+.RE .subtle {
+    color: hsl(0, 0%, 40%)
+}
+.RE .recover {
+    background:hsl(0, 0%, 65%);
+}
+.RE .recover:hover {
+    background: crimson;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.checkbox {
+    padding-left: 15px;
+    padding-top: 2px;
+    width: 100px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox span {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  height: 25px;
+  width: 25px;
+  background-color: #111;
+}
+
+.checkbox.nolabel span {
+    top: -12px;
+    left: 0
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ span {
+  background-color: #333;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ span {
+  background-color: crimson;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox span:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ span:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox span:after {
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+
+@media only screen and (min-width: 820px) {
+    .container {
+        max-width: 1200px;
+    }
+    .characterDiv {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        grid-gap: 0 20px;
+    }
+    .characterDiv > :first-child {
+        grid-column: span 2;
+    }
+    .charGen {
+        max-width: 400px;
+    }
+}
+
+
+/* The animation code */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

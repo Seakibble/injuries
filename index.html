@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Injuries for D&D 5e</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Injuries for D&D 5e</h1>
+        <h2 id="charactersHeading">Characters</h2>
+        <div id="characters"></div>
+
+        <div>
+            <h2>Character Generation</h2>
+            <div class="charGen grid">
+                <p>Character Name</p>
+                <p id="name" class="input" contenteditable='true'>Paladinius</p>
+
+                <p>Constitution Score</p>
+                <input id="con" class="input" type='number' value='12' min=1/>
+                
+                <p>Proficiency Bonus</p>
+                <input id="prof" class="input" type='number' value='2' min=2/>
+
+                <p>Injury Threshold</p>
+                <p id="IT" class="highlight">14</p>
+
+                <p>Hit Point Maximum</p>
+                <input id="HP" class="input" type='number' value='20' min=1/>
+
+                <p>Reduced Injuries</p>
+                <label class='checkbox nolabel'>
+                    <input id="reducedInjuries" type="checkbox" />
+                    <span></span>
+                </label>                
+
+                <button id='makeCharacter'>Create New Character</button>
+            </div>        
+        </div>
+    </div>
+    <script src="dice.js"></script>
+    <script src="injuries.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
